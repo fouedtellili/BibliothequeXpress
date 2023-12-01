@@ -14,4 +14,5 @@ public interface LivreService {
     void addExemplaires(Long livreId, int quantite);
 
     List<Livre> searchLivres(String titre, String auteur, Long categorieId);
+
 }

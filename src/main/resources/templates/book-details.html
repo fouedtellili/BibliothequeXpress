@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #3498db; /* Blue color for the heading */
+        }
+
+        div {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff; /* White background for the book details */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow for the details box */
+            padding: 20px;
+        }
+
+        p {
+            margin: 10px 0;
+        }
+
+        strong {
+            font-weight: bold;
+            color: #333333; /* Dark gray color for the strong text */
+        }
+
+        span {
+            color: #555555; /* Light gray color for the book details */
+        }
+    </style>
+    <title>Book Details</title>
+
+</head>
+<body>
+<h1>Book Details</h1>
+<div>
+    <p><strong>Title:</strong> <span th:text="${book.titre}"></span></p>
+    <p><strong>Author:</strong> <span th:text="${book.auteur}"></span></p>
+    <p><strong>datePublication:</strong> <span th:text="${book.datePublication}"></span></p>
+    <p><strong>numeroISBN:</strong> <span th:text="${book.numeroISBN}"></span></p>
+    <p><strong>exemplairesDisponibles:</strong> <span th:text="${book.exemplairesDisponibles}"></span></p>
+    <p><strong>categorie:</strong> <span th:text="${book.categorie.nom}"></span></p>
+</div>
+</body>
+</html>

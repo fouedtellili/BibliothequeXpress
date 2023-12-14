@@ -22,11 +22,11 @@ public class LivreController {
     @Autowired
     private CategorieService categorieService;
 
-    @GetMapping("/home")
+    @GetMapping("/home1")
     public String showHomePage(Model model) {
         List<Livre> books = livreService.getAllLivres();
         model.addAttribute("books", books);
-        return "home";
+        return "home1";
     }
     @GetMapping
     public List<Livre> getAllLivres() {

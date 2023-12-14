@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attribution de Cartes de Bibliothèque</title>
+    <!-- Incluez les liens vers les fichiers CSS, JavaScript, etc., nécessaires pour votre mise en page -->
+</head>
+<body>
+
+<h1>Attribution de Cartes de Bibliothèque</h1>
+
+<form th:action="@{/attribution-carte}" method="post">
+    <label for="userId">Utilisateur:</label>
+    <select id="userId" name="userId" required>
+        <option value="" disabled selected>Sélectionnez un utilisateur</option>
+        <!-- Boucle sur la liste des utilisateurs disponibles -->
+        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.nom + ' ' + user.prenom}"></option>
+    </select>
+
+    <button type="submit">Attribuer Carte</button>
+</form>
+
+<!-- Affichez un message de succès ou d'erreur ici si nécessaire -->
+
+</body>
+</html>

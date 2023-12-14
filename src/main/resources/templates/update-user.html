@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update User</title>
+    <style>
+        body {
+            background: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4);
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+        }
+
+        form {
+            width: 60%;
+            margin: 20px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        select {
+            appearance: none;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: white;
+            color: #555;
+            font-size: 16px;
+        }
+
+        select:hover {
+            border-color: #888;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        .password-container {
+            position: relative;
+        }
+
+        .show-password-button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            padding: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .show-password-button:hover {
+            background-color: #2980b9;
+        }
+
+    </style>
+    <script>
+
+            function togglePasswordVisibility() {
+            var passwordField = document.getElementById("password");
+
+            passwordField.type = (passwordField.type === "password") ? "text" : "password";
+        }
+    </script>
+</head>
+<body>
+<h1>Update User</h1>
+<form th:object="${user}" th:action="@{/users/update/{id}(id=${user.id})}" method="post">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" name="firstName" th:field="*{nom}" required>
+
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" th:field="*{prenom}" required>
+
+    <label for="address">Address:</label>
+    <input type="text" id="address" name="address" th:field="*{adresse}" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" th:field="*{email}" required>
+
+    <div class="password-container">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" th:field="*{password}" required>
+        <button type="button" class="show-password-button" onclick="togglePasswordVisibility()">👁️</button>
+    </div>
+
+
+    <button type="submit">Update User</button>
+</form>
+</body>
+</html>

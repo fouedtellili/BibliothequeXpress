@@ -3,6 +3,7 @@ package com.example.bibliothequexpress.serviceImpl;
 import com.example.bibliothequexpress.model.CarteBibliotheque;
 import com.example.bibliothequexpress.model.User;
 import com.example.bibliothequexpress.repository.CarteBibliothequeRepository;
+import com.example.bibliothequexpress.repository.UserRepository;
 import com.example.bibliothequexpress.service.CarteBibliothequeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,8 @@ import java.util.List;
 public class CarteBibliothequeServiceImpl implements CarteBibliothequeService {
     @Autowired
     private CarteBibliothequeRepository carteBibliothequeRepository;
+    @Autowired
+    UserRepository userRepository;
 
     @Override
     public List<CarteBibliotheque> getAllCartesBibliotheque() {
@@ -35,4 +38,8 @@ public class CarteBibliothequeServiceImpl implements CarteBibliothequeService {
     public void retirerCarteBibliotheque(Long id) {
         carteBibliothequeRepository.deleteById(id);
     }
+
+
+
+
 }

@@ -93,50 +93,82 @@
         button.add-new-button:hover {
             background-color: #2980b9; /* Darker blue background color on hover */
         }
-        header {
-            background-color: #3498db;
-            color: #fff;
-            padding: 10px 0;
-        }
-
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
-
-        .nav-links {
-            list-style: none;
+        body {
+            background: linear-gradient(to right, #7F7FD5, #86A8E7, #91EAE4);
             margin: 0;
-            padding: 0;
-            display: flex;
+            font-family: 'Arial', sans-serif;
+            padding: 20px;
         }
 
-        .nav-links li {
-            margin-right: 20px;
+        /* Improved style for the navigation bar */
+        .navbar {
+            overflow: hidden;
+            background-color: #333;
+            border-radius: 10px;
+            margin: 20px 0;
         }
 
-        .nav-links a {
+        .navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 24px;
             text-decoration: none;
-            color: #fff;
-            font-weight: bold;
-            font-size: 16px;
-            transition: color 0.3s ease;
         }
 
-        .nav-links a:hover {
-            color: #e0e0e0;
+        .navbar i {
+            margin-right: 8px; /* Adjust the margin as needed */
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Style for the welcome message */
+        h1 {
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .action-buttons button.details {
+            background-color: #3498db;
+            border: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-buttons button.details:hover {
+            background-color: #2980b9;
+        }
+        .search-container {
+            margin: 20px auto;
+            text-align: center;
+        }
+
+        input.searchInput {
+            padding: 10px;
+            width: 60%;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button.search-button {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: #ffffff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button.search-button:hover {
+            background-color: #2980b9;
         }
 
     </style>
@@ -170,24 +202,44 @@
         function updateBook(bookId) {
             window.location.href = `/books/update/${bookId}`;
         }
+        function getBookDetails(bookId) {
+            window.location.href = `books/${bookId}`;
+        }
+        function searchBooks() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("searchInput");
+            filter = input.value.toUpperCase();
+            table = document.querySelector("table");
+            tr = table.getElementsByTagName("tr");
+
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0]; // Change index based on the column you want to search
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
     </script>
 
 </head>
 <body>
-<header>
-    <nav class="navbar">
-        <div class="container">
-            <div class="logo">Library Catalog</div>
-            <ul class="nav-links">
-                <li><a href="/home">Home</a></li>
-                <li><a href="/books">Books</a></li>
-                <li><a href="/about">About</a></li>
-                <!-- Add more navigation links as needed -->
-            </ul>
-        </div>
-    </nav>
-</header>
+
+    <div class="navbar">
+        <a href="/home1"><i class="fas fa-home"></i> Home</a>
+        <a href="/books"><i class="fas fa-book"></i> Book List</a>
+        <a href="/users"><i class="fas fa-user"></i> User List</a>
+        <a href="/reservations"><i class="fas fa-calendar-alt"></i> Reservation List</a>
+    </div>
 <h1>Library Catalog</h1>
+    <div class="search-container">
+        <input type="text" id="searchInput" class="searchInput" onkeyup="searchBooks()" placeholder="Search by Title">
+        <button class="search-button" onclick="searchBooks()"><i class="fas fa-search"></i> Search</button>
+    </div>
 
 <a href="/books/add" class="button-link">
     <button class="add-new-button"><i class="fas fa-plus"></i> Add New Book</button>
@@ -216,6 +268,7 @@
         <td class="action-buttons">
             <button th:attr="data-bookid=${book.id}" onclick="updateBook(this.getAttribute('data-bookid'))"><i class="fas fa-edit"></i></button>
             <button class="delete" th:attr="data-bookid=${book.id}" onclick="deleteBook(this.getAttribute('data-bookid'))"><i class="fas fa-trash-alt"></i></button>
+            <button class="details" th:attr="data-bookid=${book.id}" onclick="getBookDetails(this.getAttribute('data-bookid'))"><i class="fas fa-info-circle"></i></button>
         </td>
     </tr>
     </tbody>

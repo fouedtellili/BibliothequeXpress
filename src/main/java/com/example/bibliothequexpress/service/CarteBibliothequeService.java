@@ -10,4 +10,8 @@ public interface CarteBibliothequeService {
     CarteBibliotheque getCarteBibliothequeById(Long id);
     CarteBibliotheque assignerCarteBibliotheque(User user);
     void retirerCarteBibliotheque(Long id);
+
+
+
+
 }

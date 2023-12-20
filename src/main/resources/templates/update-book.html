@@ -80,6 +80,7 @@
 <body>
 <h1>Update Book</h1>
 <form th:object="${book}" th:action="@{/books/update/{id}(id=${book.id})}" method="post">
+
     <label for="title">Title:</label>
     <input type="text" id="title" name="title" th:field="*{titre}" required>
 
@@ -95,11 +96,14 @@
     <label for="exemplairesDisponibles">Nombre Exemplaire Disponible:</label>
     <input type="number" id="exemplairesDisponibles" name="exemplairesDisponibles" th:field="*{exemplairesDisponibles}" required>
 
+
+
     <label for="category">Categorie:</label>
     <select id="category" name="category" th:field="*{categorie}" required>
         <option value="" disabled selected>Choisissez une catégorie</option>
         <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.nom}"></option>
     </select>
+
 
 
     <button type="submit">Update Book</button>

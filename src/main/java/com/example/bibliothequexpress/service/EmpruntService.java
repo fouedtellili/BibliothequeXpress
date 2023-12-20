@@ -13,4 +13,5 @@ public interface EmpruntService {
     Emprunt emprunterLivre(User user, Livre livre);
     void retournerLivre(Long empruntId);
     void renouvelerEmprunt(Long empruntId);
+
 }

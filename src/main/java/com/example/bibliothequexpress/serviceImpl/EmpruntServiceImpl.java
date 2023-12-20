@@ -1,10 +1,10 @@
 package com.example.bibliothequexpress.serviceImpl;
+
 import com.example.bibliothequexpress.model.Emprunt;
 import com.example.bibliothequexpress.model.Livre;
 import com.example.bibliothequexpress.model.User;
 import com.example.bibliothequexpress.repository.EmpruntRepository;
 import com.example.bibliothequexpress.service.EmpruntService;
-import com.example.bibliothequexpress.service.RappelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
@@ -16,8 +16,6 @@ public class EmpruntServiceImpl implements EmpruntService {
     @Autowired
     private EmpruntRepository empruntRepository;
 
-    @Autowired
-    private RappelService rappelService;
 
     @Override
     public List<Emprunt> getAllEmprunts() {
@@ -35,7 +33,7 @@ public class EmpruntServiceImpl implements EmpruntService {
         emprunt.setUser(user);
         emprunt.setLivre(livre);
         emprunt.setDateDebut(LocalDate.now());
-        emprunt.setDateFin(LocalDate.now().plusDays(14)); // Exemple 14 days
+        emprunt.setDateFin(LocalDate.now().plusDays(14));
         emprunt.setRenouvele(false);
         return empruntRepository.save(emprunt);
     }
@@ -58,3 +56,4 @@ public class EmpruntServiceImpl implements EmpruntService {
         }
     }
 }
+

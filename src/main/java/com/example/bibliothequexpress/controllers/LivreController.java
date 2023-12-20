@@ -28,6 +28,24 @@ public class LivreController {
         model.addAttribute("books", books);
         return "home1";
     }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+    @GetMapping("/signup")
+    public String signin() {
+        return "signup";
+    }
+    @GetMapping("/books/{id}/details")
+    public String showBookDetails(@PathVariable Long id, Model model) {
+        // Récupérez les détails du livre en fonction de l'ID
+        Livre book = livreService.getLivreById(id);
+        model.addAttribute("book", book);
+        return "bookDetails";
+    }
+
+
     @GetMapping
     public List<Livre> getAllLivres() {
 
@@ -99,6 +117,7 @@ public class LivreController {
         existingBook.setNumeroISBN(updatedBook.getNumeroISBN());
         existingBook.setExemplairesDisponibles(updatedBook.getExemplairesDisponibles());
         existingBook.setCategorie(updatedBook.getCategorie());
+        existingBook.setDescription(updatedBook.getDescription());
 
         livreService.saveLivre(existingBook);
         return "redirect:/books";

@@ -69,6 +69,7 @@
     <p><strong>Publication Date:</strong> <span th:text="${book.datePublication}"></span></p>
     <p><strong>ISBN:</strong> <span th:text="${book.numeroISBN}"></span></p>
     <p><strong>Available Copies:</strong> <span th:text="${book.exemplairesDisponibles}"></span></p>
+
     <p><strong>Category:</strong> <span th:text="${book.categorie.nom}"></span></p>
 </div>
 <a th:href="@{/books}">Back to Books List</a>

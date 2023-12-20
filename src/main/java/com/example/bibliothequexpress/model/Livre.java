@@ -14,7 +14,8 @@ public class Livre {
     private String datePublication;
     private String numeroISBN;
     private int exemplairesDisponibles;
-    private String imageName;
+
+    private String description;
 
     @ManyToOne
     private Categorie categorie;

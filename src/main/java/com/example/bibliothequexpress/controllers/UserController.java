@@ -6,6 +6,7 @@ import com.example.bibliothequexpress.model.Livre;
 import com.example.bibliothequexpress.model.User;
 import com.example.bibliothequexpress.service.CarteBibliothequeService;
 import com.example.bibliothequexpress.service.UserService;
+import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

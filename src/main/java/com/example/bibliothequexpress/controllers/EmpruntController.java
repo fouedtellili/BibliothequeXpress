@@ -34,12 +34,8 @@ public class EmpruntController {
         return empruntService.getEmpruntById(id);
     }
 
-    @PostMapping("/emprunter/{utilisateurId}/{livreId}")
-    public Emprunt emprunterLivre(@PathVariable Long utilisateurId, @PathVariable Long livreId) {
-        User user = userService.getUserById(utilisateurId);
-        Livre livre = livreService.getLivreById(livreId);
-        return empruntService.emprunterLivre(user, livre);
-    }
+
+
 
     @PostMapping("/retourner/{empruntId}")
     public void retournerLivre(@PathVariable Long empruntId) {

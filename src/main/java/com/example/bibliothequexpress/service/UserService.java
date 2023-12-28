@@ -6,6 +6,10 @@ import com.example.bibliothequexpress.model.User;
 import java.util.List;
 
 public interface UserService {
+    public User userRegister(User user);
+    public void initRolesAndUsers();
+    public User registerNewUser(User user);
+
 
     List<User> getAllUsers();
     User getUserById(Long id);
